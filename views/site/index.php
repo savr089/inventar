@@ -22,7 +22,7 @@ $this->title = 'Comps';
             'title' => 'Краткое описание',
         ]);
 
-        echo 'Say hello...';
+        echo 'Привет';
 
         Modal::end();
         ?>
