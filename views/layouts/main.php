@@ -5,10 +5,13 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use app\widgets\LoginFormWidget;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
+use yii\bootstrap4\Modal;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\widgets\ActiveForm;
 
 AppAsset::register($this);
 ?>
@@ -24,6 +27,7 @@ AppAsset::register($this);
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
+<?= (Yii::$app->user->isGuest ? LoginFormWidget::widget([]) : ''); ?>
 
 <header>
     <?php
@@ -38,7 +42,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav ml-auto'],
         'items' => [
             Yii::$app->user->isGuest ? (
-                ['label' => 'Вход', 'url' => ['/site/login']]
+                ['label' => 'Вход', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#login-modal']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])

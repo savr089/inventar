@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -124,5 +125,21 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionAjaxLogin() {
+        if (Yii::$app->request->isAjax) {
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post())) {
+                if ($model->login()) {
+                    return $this->goBack();
+                } else {
+                    Yii::$app->response->format = yii\web\Response::FORMAT_JSON;
+                    return \yii\widgets\ActiveForm::validate($model);
+                }
+            }
+        } else {
+            throw new HttpException(404 ,'Page not found');
+        }
     }
 }
