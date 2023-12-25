@@ -48,16 +48,16 @@ class Invent extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'hostname' => 'Hostname',
-            'username' => 'Username',
-            'ipaddr' => 'Ipaddr',
-            'macaddr' => 'Macaddr',
-            'platform' => 'Platform',
-            'motherboard' => 'Motherboard',
-            'opmemory' => 'Opmemory',
-            'hard' => 'Hard',
-            'cpu' => 'Cpu',
-            'os' => 'Os',
+            'hostname' => 'Имя компьютера',
+            'username' => 'Имя пользователя',
+            'ipaddr' => 'Ip-адрес',
+            'macaddr' => 'Mac-адрес',
+            'platform' => 'Вендор',
+            'motherboard' => 'Материнская плата',
+            'opmemory' => 'Оперативная память',
+            'hard' => 'Жесткий диск',
+            'cpu' => 'CPU',
+            'os' => 'Операционная система',
         ];
     }
 }
